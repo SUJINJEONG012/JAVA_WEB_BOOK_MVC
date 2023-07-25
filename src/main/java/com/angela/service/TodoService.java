@@ -27,5 +27,18 @@ public enum TodoService {
 		}).collect(Collectors.toList());
 		
 		return todoDtos;
+	};
+	
+	/* get()메서드는 특정한 번호의 TodoDto를 구현하는 기능이지만 예쩨에서는 
+	 * 샘플용 TodoDto객체를 생성해서 반환해 주도록 구현 */
+	
+	public TodoDto get(Long tno) {
+		TodoDto dto = new TodoDto();
+		dto.setTno(tno);
+		dto.setTitle("Sample Todo");
+		dto.setDueDate(LocalDate.now());
+		dto.setFinished(true);
+		
+		return dto;
 	}
 }
