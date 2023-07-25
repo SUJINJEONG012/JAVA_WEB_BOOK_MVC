@@ -24,14 +24,20 @@
     홀수
     </c:if> --%>
 
-		<c:choose>
+	<%-- 	<c:choose>
 			<c:when test="${list.size() % 2 == 0}">
      짝수
      </c:when>
 			<c:otherwise>
      홀수
      </c:otherwise>
-		</c:choose>
+		</c:choose> --%>
+		
+		<%-- <c:forEach var="num" begin="1" end="10">
+		<c:if test="${num === target}">
+		num is target
+		</c:if>
+		</c:forEach> --%>
 
 	</ul>
 
