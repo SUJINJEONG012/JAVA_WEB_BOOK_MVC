@@ -9,9 +9,21 @@
 <h1>List Page</h1>
 
 <ul>
-    <c:forEach var="dto" items="${list}">
+    <%-- <c:forEach var="dto" items="${list}">
         <li>${dto}</li>
-    </c:forEach>
+    </c:forEach> --%>
+    
+    <%-- <c:forEach var="num" begin="1" end="10">
+    <li>${num}</li>
+    </c:forEach> --%>
+    
+    <%-- <c:if test="${list.size() % 2 == 0}">
+    짝수
+    </c:if>
+    <c:if test="${list.size() % 2 != 0}">
+    홀수
+    </c:if> --%>
+    
 </ul>
 
 </body>
