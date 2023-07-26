@@ -2,6 +2,9 @@ package com.angela.dto;
 
 import java.time.LocalDate;
 
+import lombok.Data;
+
+
 public class TodoDto {
 	private Long tno;
 	private String title;

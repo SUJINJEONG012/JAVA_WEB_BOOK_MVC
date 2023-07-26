@@ -28,6 +28,7 @@ public class ConnectTests {
 		Assertions.assertNotNull(connection);
 		
 		System.out.println("connection: " + connection);
+		//반드시 connection은 close() 해야함.
 		connection.close();
 	}
 }
