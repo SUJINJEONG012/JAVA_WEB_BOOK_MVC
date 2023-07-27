@@ -15,4 +15,6 @@ public class TodoDaoTests {
 	public void testTime() throws Exception{
 		System.out.println(todoDao.getTime());
 	}
+	
+
 }
