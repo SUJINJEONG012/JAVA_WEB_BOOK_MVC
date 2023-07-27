@@ -1,13 +1,13 @@
 package com.angela.dao;
 
 import java.time.LocalDate;
-
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import com.angela.vo.TodoVo;
 
 public class TodoDaoTests {
+	
 	private TodoDao todoDao;
 	
 	@BeforeEach
@@ -27,8 +27,16 @@ public class TodoDaoTests {
 				.dueDate(LocalDate.of(2023, 7, 27))
 				.build();
 		todoDao.insert(todoVo);
-		
 	}
 	
+	
+	@Test
+	public void testList() throws Exception{	
+		List<TodoVo> list = todoDao.selectAll();
+		list.forEach(vo -> System.out.println(vo));
+	}
+	
+	
+		
 
 }

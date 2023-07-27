@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.angela.vo.TodoVo;
 
@@ -39,6 +41,28 @@ public class TodoDao {
 		preparedStatement.setBoolean(3, vo.isFinished());
 		preparedStatement.executeUpdate();
 		
+	}
+	
+	
+	public List<TodoVo> selectAll() throws Exception{
+		String sql = "select * from tbl_todo";
+		
+		@Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+		@Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		@Cleanup ResultSet resultSet = preparedStatement.executeQuery();
+		
+		List<TodoVo> list = new ArrayList<>();
+		while(resultSet.next()) {
+			TodoVo vo = TodoVo.builder()
+					.tno(resultSet.getLong("tno"))
+					.title(resultSet.getString("title"))
+					.dueDate(resultSet.getDate("dueDate").toLocalDate())
+					.finished(resultSet.getBoolean("finished"))
+					.build();
+			
+			list.add(vo);
+		}
+		return list;		  
 	}
 	
 	
