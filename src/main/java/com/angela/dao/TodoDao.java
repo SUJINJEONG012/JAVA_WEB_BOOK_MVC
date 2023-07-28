@@ -89,5 +89,34 @@ public class TodoDao {
 		
 	} 
 	
+	// 삭제기능 
+	public void deleteedOne(Long tno) throws Exception{
+		String sql = "delete from tbl_todo where tno = ?";
+		
+		@Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+		@Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		
+		preparedStatement.setLong(1, tno);
+		preparedStatement.executeUpdate();
+	}
+	
+	// 수정기능
+	public void updateOne(TodoVo todoVo) throws Exception {
+		String sql = "update tbl_todo set title =?, dueDate =?, finished = ? where tno = ?";
+		
+		@Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+		@Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		
+		preparedStatement.setString(1, todoVo.getTitle());
+		preparedStatement.setDate(2, Date.valueOf(todoVo.getDueDate()));
+		preparedStatement.setBoolean(3, todoVo.isFinished());
+		preparedStatement.setLong(4, todoVo.getTno());
+		
+		preparedStatement.executeUpdate();
+		
+	}
+	
+	
+	
 	
 }

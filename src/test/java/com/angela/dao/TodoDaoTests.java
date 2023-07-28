@@ -45,6 +45,16 @@ public class TodoDaoTests {
 		System.out.println(vo);
 	}
 	
+	@Test
+	public void testUpdateOne() throws Exception{
+		TodoVo todoVo = TodoVo.builder()
+				.tno(1L)
+				.title("Sample title")
+				.dueDate(LocalDate.of(2023, 07, 28))
+				.build();
+				
+				todoDao.updateOne(todoVo);
+	}
 		
 
 }
