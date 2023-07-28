@@ -9,7 +9,7 @@ import com.angela.dto.TodoDto;
 
 import lombok.extern.log4j.Log4j2;
 
-
+@Log4j2
 public class TodoServiceTests {
 	
 	private TodoService todoService;
@@ -25,6 +25,8 @@ public class TodoServiceTests {
 		.title("JDBC Test Title")
 		.dueDate(LocalDate.now())
 		.build();
+		log.info("==============");
+		log.info(todoDto);
 		todoService.register(todoDto);
 	}
 
