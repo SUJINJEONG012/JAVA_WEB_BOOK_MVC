@@ -66,5 +66,28 @@ public class TodoDao {
 	}
 	
 	
+	// 조회기능
+	public TodoVo selectOne(Long tno) throws Exception{
+		String sql = "select * from tbl_todo where tno = ?";
+		
+		@Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+		@Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		
+		preparedStatement.setLong(1, tno);
+		
+		@Cleanup ResultSet resultSet = preparedStatement.executeQuery();
+		
+		resultSet.next();
+		TodoVo vo= TodoVo.builder()
+				.tno(resultSet.getLong("tno"))
+				.title(resultSet.getString("title"))
+				.dueDate(resultSet.getDate("dueDate").toLocalDate())
+				.finished(resultSet.getBoolean("finished"))
+				.build();
+		
+		return vo;	
+		
+	} 
+	
 	
 }

@@ -20,22 +20,30 @@ public class TodoDaoTests {
 		System.out.println(todoDao.getTime());
 	}
 	
+//	//생성
+//	@Test
+//	public void testInsert() throws Exception {
+//		TodoVo todoVo = TodoVo.builder()
+//				.title("sample Title...")
+//				.dueDate(LocalDate.of(2023, 7, 27))
+//				.build();
+//		todoDao.insert(todoVo);
+//	}
+//	
+//	//목록
+//	@Test
+//	public void testList() throws Exception{	
+//		List<TodoVo> list = todoDao.selectAll();
+//		list.forEach(vo -> System.out.println(vo));
+//	}
+	
+	//조회기능
 	@Test
-	public void testInsert() throws Exception {
-		TodoVo todoVo = TodoVo.builder()
-				.title("sample Title...")
-				.dueDate(LocalDate.of(2023, 7, 27))
-				.build();
-		todoDao.insert(todoVo);
+	public void testSelectOne() throws Exception{
+		Long tno = 1L;
+		TodoVo vo = todoDao.selectOne(tno);
+		System.out.println(vo);
 	}
-	
-	
-	@Test
-	public void testList() throws Exception{	
-		List<TodoVo> list = todoDao.selectAll();
-		list.forEach(vo -> System.out.println(vo));
-	}
-	
 	
 		
 
