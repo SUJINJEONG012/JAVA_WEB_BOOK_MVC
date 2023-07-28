@@ -15,12 +15,5 @@ import com.angela.service.TodoService;
 @WebServlet(name="todoController", urlPatterns="/todo/list")
 public class TodoListController extends HttpServlet{
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/todo/list");
-		
-		List<TodoDto> dtoList = TodoService.INSTACNE.getList();
-		req.setAttribute("list", dtoList);
-		req.getRequestDispatcher("/WEB-INF/todo/list.jsp").forward(req, resp);
-	}
+
 }
