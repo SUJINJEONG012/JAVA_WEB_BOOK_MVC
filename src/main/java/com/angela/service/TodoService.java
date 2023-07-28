@@ -10,6 +10,9 @@ import com.angela.dto.TodoDto;
 import com.angela.util.MapperUtil;
 import com.angela.vo.TodoVo;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public enum TodoService {
 	INSTACNE;
 
@@ -28,7 +31,9 @@ public enum TodoService {
 	 * */
 	public void register(TodoDto todoDto) throws Exception{
 		TodoVo todoVo = modelMapper.map(todoDto, TodoVo.class);
-		System.out.println("todoVo : " + todoVo);
+		//System.out.println("todoVo : " + todoVo);
+		log.info(todoVo);
+		
 		dao.insert(todoVo);
 	}
 	
