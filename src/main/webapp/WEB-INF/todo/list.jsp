@@ -38,6 +38,10 @@
 		num is target
 		</c:if>
 		</c:forEach> --%>
+		
+		<c:forEach items="${dtoList}" var="dao">
+		<li>${dao}</li>
+		</c:forEach>
 
 	</ul>
 

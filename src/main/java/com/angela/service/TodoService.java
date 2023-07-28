@@ -37,6 +37,20 @@ public enum TodoService {
 		dao.insert(todoVo);
 	}
 	
+	public List<TodoDto> listAll()throws Exception {
+
+        List<TodoVo> voList = dao.selectAll();
+
+        log.info("voList.................");
+        log.info(voList);
+
+        List<TodoDto> dtoList = voList.stream()
+                .map(vo -> modelMapper.map(vo,TodoDto.class))
+                .collect(Collectors.toList());
+
+        return dtoList;
+    }
+	
 
 	
 	
