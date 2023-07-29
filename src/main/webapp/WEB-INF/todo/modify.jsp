@@ -26,5 +26,12 @@
 		<button type="submit">Modify</button>
 		</div>
 	</form>
+	
+	<form id="form2" action="/todo/remove" method="post">
+	 <input type="hidden" name="tno" value="${dto.tno}" readonly>
+	 <div>
+	 <button type="submit">Remove</button>
+	 </div>
+	</form>
 </body>
 </html>

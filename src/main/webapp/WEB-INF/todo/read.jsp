@@ -18,7 +18,7 @@
 		<input type="date" name="dueDate" value="${dto.dueDate}" readonly>
 	</div>
 	<div>
-		<input type="checkbox" name="finished" ${dto.finished ? "checked" : ""} readonly>
+		<input type="checkbox" name="finished" ${dto.finished ? "checked" : ""} readOnly>
 	</div>
 	<div>
 		<a href="/todo/modify?tno=${dto.tno}">Modify/Remove</a>
