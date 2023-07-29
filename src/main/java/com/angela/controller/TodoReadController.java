@@ -21,11 +21,14 @@ public class TodoReadController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		try {
 			Long tno = Long.parseLong(req.getParameter("tno"));
+		
 			TodoDto todoDto = todoService.get(tno);
 			//데이터 담기
-			req.getRequestDispatcher("/WEB/INF/todo/read.jsp").forward(req, resp);
+			req.setAttribute("dto", todoDto);
+			req.getRequestDispatcher("/WEB-INF/todo/read.jsp").forward(req, resp);
 			
 		}catch(Exception e) {
 			log.info(e.getMessage());
