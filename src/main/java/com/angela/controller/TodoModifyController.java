@@ -1,6 +1,7 @@
 package com.angela.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
@@ -34,4 +35,27 @@ public class TodoModifyController extends HttpServlet{
 			throw new ServletException("Modify get.........error");
 		}
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String finishedStr = req.getParameter("finished");
+		
+		TodoDto todoDto = TodoDto.builder()
+				.tno(Long.parseLong(req.getParameter("tno")))
+				.title(req.getParameter("title"))
+				.dueDate(LocalDate.parse(req.getParameter("dueDate"),DATEFORMATTER))
+				.finished(finishedStr != null && finishedStr.equals("on"))
+				.build();
+		
+		log.info("/todo/modify Post......");
+		log.info(todoDto);
+		try {
+			todoService.modify(todoDto);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		resp.sendRedirect("/todo/list");
+	}
+	
 }
